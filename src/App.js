@@ -26,20 +26,18 @@ class App {
   async playGame() {
     Console.print(this.script.gameStart);
 
-    let isCorrect = false
 
-    while(!isCorrect) {
+    while(true) {
       const userNums = await this.getUserInput();
 
       if (!this.isCorrectNums(userNums)) throw new Error("[ERROR]");
 
       const {strike,ball} = this.getResult(userNums);
 
-      isCorrect = strike ===3
 
       this.printResult(strike, ball);
 
-      if (isCorrect)
+      if (strike===3)
         return await this.askForRetry();
     }
   }
