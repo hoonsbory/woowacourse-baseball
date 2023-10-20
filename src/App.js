@@ -14,11 +14,12 @@ class App {
   constructor() {
   }
   async play() {
-    let restartGame;
-    do {
+    let isContinue = true;
+
+     while (isContinue){
       this.comNum = this.generateUniqueNumbers(this.numRange,1,9);
-      restartGame = await this.playGame();
-    } while (restartGame);
+       isContinue = await this.playGame();
+    }
 
     Console.print(this.script.exit);
   }
@@ -48,6 +49,7 @@ class App {
   }
 
   printResult(strike, ball) {
+
     if (strike ===0 && ball ===0)
       Console.print(this.script.noCorrect);
     else
